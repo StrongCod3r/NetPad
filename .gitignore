@@ -1,0 +1,48 @@
+# .NET build output
+bin/
+obj/
+TestResults/
+artifacts/
+
+# NuGet packages and local feeds
+*.nupkg
+*.snupkg
+packages/
+local-nuget/
+.nuget/
+
+# VS Code extension / Node
+NetPadExtension/out/
+NetPadExtension/node_modules/
+NetPadExtension/*.vsix
+NetPadExtension/.vscode-test/
+NetPadExtension/.vscode-test-web/
+NetPadExtension/npm-debug.log*
+NetPadExtension/yarn-debug.log*
+NetPadExtension/yarn-error.log*
+
+# Temporary NetPad runner output
+.netpad/
+**/.netpad/
+**/Generated/
+
+# IDE and editor state
+.vs/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp

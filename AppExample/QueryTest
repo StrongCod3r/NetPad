@@ -1,0 +1,8 @@
+
+public class QueryTest : INetPadQuery
+{
+  public void Run()
+  {
+    
+  }
+}

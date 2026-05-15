@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- Metadata NuGet -->
+    <PackageId>NetPad</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>none</Authors>
+    <Company>none</Company>
+    <Description>NetPad Core</Description>
+
+    <!-- Opcional pero recomendado -->
+    <PackageTags>csharp;utils</PackageTags>
+    <RepositoryUrl>https://github.com/tu/repo</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+    <!-- Generar el .nupkg automáticamente -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

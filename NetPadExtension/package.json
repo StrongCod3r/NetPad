@@ -1,0 +1,141 @@
+{
+  "name": "netpad",
+  "displayName": "NetPad",
+  "description": "LINQPad-style C# scratch queries and rich result inspection in VS Code.",
+  "version": "0.0.1",
+  "publisher": "proof",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "netpad.newQuery",
+        "title": "NetPad: New Query"
+      },
+      {
+        "command": "netpad.newQueryFile",
+        "title": "NetPad: New Query File"
+      },
+      {
+        "command": "netpad.runQuery",
+        "title": "NetPad: Run Query"
+      },
+      {
+        "command": "netpad.runQueryFile",
+        "title": "NetPad: Run Query File"
+      },
+      {
+        "command": "netpad.openQueryFile",
+        "title": "NetPad: Open Query File"
+      },
+      {
+        "command": "netpad.refreshQueries",
+        "title": "NetPad: Refresh Queries"
+      },
+      {
+        "command": "netpad.showResults",
+        "title": "NetPad: Show Results"
+      },
+      {
+        "command": "netpad.showTextResults",
+        "title": "NetPad: Show Text Results"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "netpadQueries",
+          "name": "NetPad Queries",
+          "when": "workspaceFolderCount != 0"
+        }
+      ]
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "netpad.runQuery",
+          "when": "editorTextFocus && (editorLangId == csharp || resourceScheme == untitled)",
+          "group": "navigation@10"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "netpad.newQueryFile",
+          "when": "explorerResourceIsFolder || foldersViewVisible",
+          "group": "navigation@10"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "netpad.newQueryFile",
+          "when": "view == netpadQueries",
+          "group": "navigation@1"
+        },
+        {
+          "command": "netpad.refreshQueries",
+          "when": "view == netpadQueries",
+          "group": "navigation@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "netpad.runQueryFile",
+          "when": "view == netpadQueries && viewItem == queryFile",
+          "group": "inline@1"
+        },
+        {
+          "command": "netpad.openQueryFile",
+          "when": "view == netpadQueries && viewItem == queryFile",
+          "group": "navigation@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "netpad.refreshQueries",
+          "when": "workspaceFolderCount != 0"
+        },
+        {
+          "command": "netpad.showTextResults"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "netpadQueries",
+        "contents": "No NetPad queries yet. [Create Query File](command:netpad.newQueryFile)"
+      }
+    ],
+    "configuration": {
+      "title": "NetPad",
+      "properties": {
+        "netpad.executionMode": {
+          "type": "string",
+          "enum": [
+            "script",
+            "temporaryProject"
+          ],
+          "default": "temporaryProject",
+          "description": "Preferred execution pipeline for NetPad queries. Script mode currently falls back to the temporary-project backend until a dedicated script runner exists."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "check": "tsc --noEmit -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.30",
+    "@types/vscode": "^1.98.0",
+    "typescript": "^5.8.3"
+  }
+}
